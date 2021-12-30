@@ -11,10 +11,10 @@ public class BOJ_4963 {
 	static int[][] table;
 	static boolean[][] visit;
 	static int W, H;
-	static int[] dx = { 0, 0, -1, 1, -1, 1, -1, 1 };// »ó,ÇÏ,ÁÂ,¿ì,¢Ø,¢Ö,¢×,¢Ù
+	static int[] dx = { 0, 0, -1, 1, -1, 1, -1, 1 };// ìƒ,í•˜,ì¢Œ,ìš°,â†–,â†—,â†™,â†˜
 	static int[] dy = { 1, -1, 0, 0, 1, 1, -1, -1 };
 
-	static void make_Table() throws IOException {// »ç¿ëÀÚ ÀÔ·Â°ª ¹Ş´Â ÇÔ¼ö
+	static void make_Table() throws IOException {// ì‚¬ìš©ì ì…ë ¥ê°’ ë°›ëŠ” í•¨ìˆ˜
 		table = new int[H][W];
 		visit = new boolean[H][W];
 		for (int i = 0; i < H; i++) {
@@ -31,9 +31,9 @@ public class BOJ_4963 {
 		int count = 1;
 		visit[x][y] = true;
 		for (int i = 0; i < 8; i++) {
-			if (x + dx[i] < 0 || x + dx[i] >= H || y + dy[i] < 0 || y + dy[i] >= W)//»óÇÏÁÂ¿ì ´ë°¢¼±ÀÌ table ¹è¿­ ¹ÛÀ¸·Î °¥ °æ¿ì Ã³¸®
+			if (x + dx[i] < 0 || x + dx[i] >= H || y + dy[i] < 0 || y + dy[i] >= W)//ìƒí•˜ì¢Œìš° ëŒ€ê°ì„ ì´ table ë°°ì—´ ë°–ìœ¼ë¡œ ê°ˆ ê²½ìš° ì²˜ë¦¬
 				continue;
-			count += DFS(x + dx[i], y + dy[i]);//»óÇÏÁÂ¿ì´ë°¢¼±¿¡ ´ëÇÑ DFSÃ³¸®
+			count += DFS(x + dx[i], y + dy[i]);//ìƒí•˜ì¢Œìš°ëŒ€ê°ì„ ì— ëŒ€í•œ DFSì²˜ë¦¬
 		}
 		return count;
 	}
@@ -42,16 +42,16 @@ public class BOJ_4963 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		while (true) {
 			String[] input = br.readLine().split(" ");
-			W = Integer.parseInt(input[0]);// ³Êºñ
-			H = Integer.parseInt(input[1]);// ³ôÀÌ
-			if (W == 0 && H == 0)// 0,0 ÀÔ·Â ½Ã ¹İº¹¹® Á¾·á
+			W = Integer.parseInt(input[0]);// ë„ˆë¹„
+			H = Integer.parseInt(input[1]);// ë†’ì´
+			if (W == 0 && H == 0)// 0,0 ì…ë ¥ ì‹œ ë°˜ë³µë¬¸ ì¢…ë£Œ
 				break;
 			else
-				make_Table();// »ç¿ëÀÚ°ª ÀÔ·Â ÇÔ¼ö È£Ãâ
+				make_Table();// ì‚¬ìš©ìê°’ ì…ë ¥ í•¨ìˆ˜ í˜¸ì¶œ
 			int ans = 0;
-			for (int i = 0; i < H; i++) {// (0,0)ºÎÅÍ (H-1,W-1)±îÁö Å½»ö
+			for (int i = 0; i < H; i++) {// (0,0)ë¶€í„° (H-1,W-1)ê¹Œì§€ íƒìƒ‰
 				for (int j = 0; j < W; j++) {
-					if (DFS(i, j) != 0)// (i,j)ÀÇ ¸®ÅÏ°ªÀÌ 0ÀÌ ¾Æ´Ò¶§¸¶´Ù ansº¯¼ö 1¾¿ Áõ°¡
+					if (DFS(i, j) != 0)// (i,j)ì˜ ë¦¬í„´ê°’ì´ 0ì´ ì•„ë‹ë•Œë§ˆë‹¤ ansë³€ìˆ˜ 1ì”© ì¦ê°€
 						ans++;
 				}
 			}
