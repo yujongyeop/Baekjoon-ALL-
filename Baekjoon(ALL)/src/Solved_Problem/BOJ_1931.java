@@ -1,40 +1,37 @@
-	package Solved_Problem;
-	
-	import java.util.Arrays;
-	import java.util.Comparator;
-	import java.util.Scanner;
-	
-	public class BOJ_1931 {
-		/*
-		 * À¯Çü: ±×¸®µğ, Á¤·Ä
-		 * ¹®Á¦ Ç®ÀÌ: ±âº»ÀûÀ¸·Î Á¾·á½Ã°£ÀÌ ºü¸¥ ¼øÀ¸·Î Á¤·ÄÇÑ´Ù(´Ü, Á¾·á½Ã°£ÀÌ °°´Ù¸é ½ÃÀÛ½Ã°£ÀÌ ºü¸¥ ¼øÀ¸·Î Á¤·Ä)
-		 * ÀÌ´Â ¾Õ¿¡ ¼±ÅÃÇÑ È¸ÀÇ°¡ ³¡³µÀ» ¶§ ¹Ù·Î µÚ¿¡ ÀÌµû¸¥ È¸ÀÇ¸¦ ¼±ÅÃÇÏ¿© ÃÖ´ëÇÑ ¸¹Àº È¸ÀÇ¸¦ ÇÒ ¼ö ÀÖ´Â °æ¿ìÀÇ ¼öÀÌ´Ù.
-		 */
-	
-		public static void main(String[] args) {
-			Scanner sc = new Scanner(System.in);
-			int N = sc.nextInt();
-			int[][] time = new int[N][2];// [N][0]Àº ½ÃÀÛ ½Ã°£, [N][1]Àº Á¾·á ½Ã°£
-			for (int i = 0; i < N; i++) {
-				time[i][0] = sc.nextInt();
-				time[i][1] = sc.nextInt();
-			}
-			sc.close();
-			Arrays.sort(time, new Comparator<int[]>() {
-				@Override
-				public int compare(int[] o1, int[] o2) {
-					// Á¾·á½Ã°£ÀÌ °°´Ù¸é ½ÃÀÛ½Ã°£ÀÌ ºü¸¥¼øÀ¸·Î Á¤·Ä
-					return o1[1] == o2[1] ? o1[0] - o2[0] : o1[1] - o2[1];
-				}	
-			});
-			int ans = 0, prev_end_time = 0;
-			for (int i = 0; i < N; i++) {
-				if (prev_end_time <= time[i][0]) {// ÀÌÀü È¸ÀÇÀÇ Á¾·á½Ã°£º¸´Ù ½Ã°£ÀÌ Å©°Å³ª °°À» ¶§
-					prev_end_time = time[i][1];
-					ans++;
-				}
-			}
-			System.out.println(ans);
+package Solved_Problem;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class BOJ_1931 {
+	/*
+	 * ìœ í˜•: ê·¸ë¦¬ë””, ì •ë ¬ ë¬¸ì œ í’€ì´: ê¸°ë³¸ì ìœ¼ë¡œ ì¢…ë£Œì‹œê°„ì´ ë¹ ë¥¸ ìˆœìœ¼ë¡œ ì •ë ¬í•œë‹¤(ë‹¨, ì¢…ë£Œì‹œê°„ì´ ê°™ë‹¤ë©´ ì‹œì‘ì‹œê°„ì´ ë¹ ë¥¸ ìˆœìœ¼ë¡œ ì •ë ¬) ì´ëŠ”
+	 * ì•ì— ì„ íƒí•œ íšŒì˜ê°€ ëë‚¬ì„ ë•Œ ë°”ë¡œ ë’¤ì— ì´ë”°ë¥¸ íšŒì˜ë¥¼ ì„ íƒí•˜ì—¬ ìµœëŒ€í•œ ë§ì€ íšŒì˜ë¥¼ í•  ìˆ˜ ìˆëŠ” ê²½ìš°ì˜ ìˆ˜ì´ë‹¤.
+	 */
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		int[][] time = new int[N][2];// [N][0]ì€ ì‹œì‘ ì‹œê°„, [N][1]ì€ ì¢…ë£Œ ì‹œê°„
+		for (int i = 0; i < N; i++) {
+			time[i][0] = sc.nextInt();
+			time[i][1] = sc.nextInt();
 		}
-	
+		sc.close();
+		Arrays.sort(time, new Comparator<int[]>() {
+			@Override
+			public int compare(int[] o1, int[] o2) {
+				// ì¢…ë£Œì‹œê°„ì´ ê°™ë‹¤ë©´ ì‹œì‘ì‹œê°„ì´ ë¹ ë¥¸ìˆœìœ¼ë¡œ ì •ë ¬
+				return o1[1] == o2[1] ? o1[0] - o2[0] : o1[1] - o2[1];
+			}
+		});
+		int ans = 0, prev_end_time = 0;
+		for (int i = 0; i < N; i++) {
+			if (prev_end_time <= time[i][0]) {// ì´ì „ íšŒì˜ì˜ ì¢…ë£Œì‹œê°„ë³´ë‹¤ ì‹œê°„ì´ í¬ê±°ë‚˜ ê°™ì„ ë•Œ
+				prev_end_time = time[i][1];
+				ans++;
+			}
+		}
+		System.out.println(ans);
 	}
+}
