@@ -1,8 +1,8 @@
 package Solved_Problem;
 
 /*
- * ½ÃÀÛ ½Ã°£: 21.12.30 11:10
- * Á¾·á ½Ã°£: 21.12.30.11:40
+ * ì‹œì‘ ì‹œê°„: 21.12.30 11:10
+ * ì¢…ë£Œ ì‹œê°„: 21.12.30.11:40
  */
 
 import java.io.BufferedReader;
@@ -20,14 +20,14 @@ public class BOJ_21736 {
 	static int N, M;
 
 	static void DFS(int x, int y) {
-		if (visit[x][y] || map[x][y] == 'X')// ÀÌ¹Ì ¹æ¹®ÇßÀ» ¶§ È¤Àº º®ÀÌ¶û ¸¸³µÀ» ¶§
+		if (visit[x][y] || map[x][y] == 'X')// ì´ë¯¸ ë°©ë¬¸í–ˆì„ ë•Œ í˜¹ì€ ë²½ì´ë‘ ë§Œë‚¬ì„ ë•Œ
 			return;
 		visit[x][y] = true;
 		char c = map[x][y];
 		if (c == 'P')
 			ans++;
-		for (int i = 0; i < 4; i++) {//»óÇÏÁÂ¿ì Å½»ö
-			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < M)// 0<=x+dx,y+dy<=N-1 ¼³Á¤
+		for (int i = 0; i < 4; i++) {//ìƒí•˜ì¢Œìš° íƒìƒ‰
+			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < M)// 0<=x+dx,y+dy<=N-1 ì„¤ì •
 				DFS(x + dx[i], y + dy[i]);
 		}
 	}
@@ -40,25 +40,25 @@ public class BOJ_21736 {
 		M = Integer.parseInt(str[1]);
 		map = new char[N][M];
 		visit = new boolean[N][M];
-		int my_x = 0, my_y = 0;// µµ¿¬ÀÌÀÇ À§Ä¡ º¯¼ö
+		int my_x = 0, my_y = 0;// ë„ì—°ì´ì˜ ìœ„ì¹˜ ë³€ìˆ˜
 
-		for (int i = 0; i < N; i++) {// Áöµµ ÀúÀå
+		for (int i = 0; i < N; i++) {// ì§€ë„ ì €ì¥
 			String input = br.readLine();
 			for (int j = 0; j < M; j++) {
 				char c = input.charAt(j);
-				if (c == 'I') {// µµ¿¬ÀÌÀÇ À§Ä¡ ÀúÀå
+				if (c == 'I') {// ë„ì—°ì´ì˜ ìœ„ì¹˜ ì €ì¥
 					my_x = i;
 					my_y = j;
 					map[i][j] = 'O';
-				} else {// µµ¿¬ÀÌÀÇ À§Ä¡°¡ ¾Æ´Ñ ³ª¸ÓÁö
+				} else {// ë„ì—°ì´ì˜ ìœ„ì¹˜ê°€ ì•„ë‹Œ ë‚˜ë¨¸ì§€
 					map[i][j] = c;
 				}
 			}
 		}
 
-		DFS(my_x, my_y);// µµ¿¬ÀÌÀÇ À§Ä¡ºÎÅÍ ½ÃÀÛ
+		DFS(my_x, my_y);// ë„ì—°ì´ì˜ ìœ„ì¹˜ë¶€í„° ì‹œì‘
 
-		if (ans != 0)// ans°¡ 0º¸´Ù Å©¸é ans¸¦ ¾Æ´Ï¸é TT¸¦ Ãâ·Â
+		if (ans != 0)// ansê°€ 0ë³´ë‹¤ í¬ë©´ ansë¥¼ ì•„ë‹ˆë©´ TTë¥¼ ì¶œë ¥
 			bw.write(ans + "");
 		else
 			bw.write("TT");
