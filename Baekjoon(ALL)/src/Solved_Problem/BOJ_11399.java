@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class BOJ_11399 {
 	/*
-	 * ÀÔ·Â¹ŞÀº °ªÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä(±âº» ¶óÀÌºê·¯¸® »ç¿ë)ÇÑ ÈÄ °¢ ½Ã°£À» ´õÇÑ °ªÀ» temp¿¡ ÀúÀåÇÏ°í ans¿¡ temp¸¦ ´õÇØÁØ´Ù.
+	 * ì…ë ¥ë°›ì€ ê°’ì„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬(ê¸°ë³¸ ë¼ì´ë¸ŒëŸ¬ë¦¬ ì‚¬ìš©)í•œ í›„ ê° ì‹œê°„ì„ ë”í•œ ê°’ì„ tempì— ì €ì¥í•˜ê³  ansì— tempë¥¼ ë”í•´ì¤€ë‹¤.
 	 */
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
