@@ -9,17 +9,17 @@ public class BOJ_16173 {
 	static int[][] map;
 
 	static void DFS(int x, int y) {
-		if (x >= N || y >= N)// x,y°¡ ¹üÀ§¸¦ ¹ş¾î³¯ °æ¿ì
+		if (x >= N || y >= N)// x,yê°€ ë²”ìœ„ë¥¼ ë²—ì–´ë‚  ê²½ìš°
 			return;
-		int val = map[x][y];// ¿òÁ÷ÀÏ ¼ö ÀÖ´Â Ä­¼ö
-		if (val == 0)// valÀÌ 0ÀÌ¸é ¹«ÇÑ ·çÇÁ(½Ã°£ÃÊ°ú)
+		int val = map[x][y];// ì›€ì§ì¼ ìˆ˜ ìˆëŠ” ì¹¸ìˆ˜
+		if (val == 0)// valì´ 0ì´ë©´ ë¬´í•œ ë£¨í”„(ì‹œê°„ì´ˆê³¼)
 			return;
-		else if (val == -1) {// Ã£¾ÒÀ»¶§
+		else if (val == -1) {// ì°¾ì•˜ì„ë•Œ
 			System.out.println("HaruHaru");
 			System.exit(0);
 		} else {
-			DFS(x + val, y);// X°ªÀ» Áõ°¡½ÃÅ´
-			DFS(x, y + val);// Y°ªÀ» Áõ°¡½ÃÅ´
+			DFS(x + val, y);// Xê°’ì„ ì¦ê°€ì‹œí‚´
+			DFS(x, y + val);// Yê°’ì„ ì¦ê°€ì‹œí‚´
 		}
 
 	}
@@ -29,7 +29,7 @@ public class BOJ_16173 {
 		N = Integer.parseInt(br.readLine());
 		map = new int[N][N];
 
-		for (int i = 0; i < N; i++) {// »ç¿ëÀÚ °ªÀ» map¿¡ ÀúÀå
+		for (int i = 0; i < N; i++) {// ì‚¬ìš©ì ê°’ì„ mapì— ì €ì¥
 			String[] input = br.readLine().split(" ");
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(input[j]);
@@ -37,7 +37,7 @@ public class BOJ_16173 {
 		}
 		br.close();
 		DFS(0, 0);
-		System.out.println("Hing");// °ªÀ» Ã£À» ¼ö ¾øÀ» ¶§
+		System.out.println("Hing");// ê°’ì„ ì°¾ì„ ìˆ˜ ì—†ì„ ë•Œ
 	}
 
 }
