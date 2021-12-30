@@ -1,7 +1,7 @@
 package Solved_Problem;
 /*
- * ½ÃÀÛ ½Ã°£: 21.12.29 9:55
- * ¿Ï·á ½Ã°£: 21.12.29 10:30
+ * ì‹œì‘ ì‹œê°„: 21.12.29 9:55
+ * ì™„ë£Œ ì‹œê°„: 21.12.29 10:30
  */
 
 import java.io.BufferedReader;
@@ -9,22 +9,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class BOJ_13565 {
-	static int[] dx = { 0, 0, -1, 1 };// »óÇÏÁÂ¿ì ¹è¿­
+	static int[] dx = { 0, 0, -1, 1 };// ìƒí•˜ì¢Œìš° ë°°ì—´
 	static int[] dy = { 1, -1, 0, 0 };
 	static int N, M;
 	static int[][] table;
 	static boolean[][] visit;
 
 	static void DFS(int x, int y) {
-		if (visit[x][y] || table[x][y] == 1)// ÀÌ¹Ì ¹æ¹®Çß°Å³ª, °ËÀº»öÀÌ¸é Á¾·á
+		if (visit[x][y] || table[x][y] == 1)// ì´ë¯¸ ë°©ë¬¸í–ˆê±°ë‚˜, ê²€ì€ìƒ‰ì´ë©´ ì¢…ë£Œ
 			return;
-		if (x == 0) {// x°¡ 0(¹Ù±ùÂÊ)ÀÌ¸é ³¡¿¡ µµ´ŞÇÑ °æ¿ìÀÓ
+		if (x == 0) {// xê°€ 0(ë°”ê¹¥ìª½)ì´ë©´ ëì— ë„ë‹¬í•œ ê²½ìš°ì„
 			System.out.println("YES");
 			System.exit(0);
 		}
 		visit[x][y] = true;
 		for (int i = 0; i < 4; i++) {
-			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < M)// (x+dx,y+dy)°¡ ¹è¿­ ¹ÛÀ¸·Î ¹ş¾î³ªÁö ¾Ê°Ô ¼³Á¤
+			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < M)// (x+dx,y+dy)ê°€ ë°°ì—´ ë°–ìœ¼ë¡œ ë²—ì–´ë‚˜ì§€ ì•Šê²Œ ì„¤ì •
 				DFS(x + dx[i], y + dy[i]);
 		}
 	}
@@ -36,16 +36,16 @@ public class BOJ_13565 {
 		M = Integer.parseInt(input[1]);// M
 		table = new int[N][M];
 		visit = new boolean[N][M];
-		for (int i = 0; i < N; i++) {// °İÀÚ ÀÔ·Â
+		for (int i = 0; i < N; i++) {// ê²©ì ì…ë ¥
 			String str = br.readLine();
 			for (int j = 0; j < M; j++)
 				table[i][j] = str.charAt(j) - '0';
 		}
 		br.close();
-		for (int i = 0; i < M; i++)// (N-1,0) ºÎÅÍ (N-1,M-1)±îÁö Å½»ö
+		for (int i = 0; i < M; i++)// (N-1,0) ë¶€í„° (N-1,M-1)ê¹Œì§€ íƒìƒ‰
 			DFS(N - 1, i);
 
-		System.out.println("NO");// ÇØ´ç ¹®ÀåÀÌ ½ÇÇàµÉ °æ¿ì´Â DFS¸¦ ÅëÇØ ¹Ù±ùÂÊ ¸éºÎÅÍ ¾ÈÂÊ¸é±îÁö Àü·ù°¡ ÅëÇÏ´Â °æ¿ì¸¦ Ã£Áö ¸øÇßÀ» ¶§ ½ÇÇà
+		System.out.println("NO");// í•´ë‹¹ ë¬¸ì¥ì´ ì‹¤í–‰ë  ê²½ìš°ëŠ” DFSë¥¼ í†µí•´ ë°”ê¹¥ìª½ ë©´ë¶€í„° ì•ˆìª½ë©´ê¹Œì§€ ì „ë¥˜ê°€ í†µí•˜ëŠ” ê²½ìš°ë¥¼ ì°¾ì§€ ëª»í–ˆì„ ë•Œ ì‹¤í–‰
 	}
 
 }
