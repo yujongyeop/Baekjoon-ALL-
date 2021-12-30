@@ -13,14 +13,14 @@ public class BOJ_2644 {
 	static boolean[] visit;
 	static int ans = 0;
 
-	static void DFS(int now, int end, int num) {// DFS°¡ ±í¾îÁú¼ö·Ï num(ÃÌ¼ö)µµ ³ô¾ÆÁü
+	static void DFS(int now, int end, int num) {// DFSê°€ ê¹Šì–´ì§ˆìˆ˜ë¡ num(ì´Œìˆ˜)ë„ ë†’ì•„ì§
 		if (visit[now])
 			return;
-		if (now == end)// N1°ú N2°¡ ¸¸³µÀ» ¶§
+		if (now == end)// N1ê³¼ N2ê°€ ë§Œë‚¬ì„ ë•Œ
 			ans = num;
 		visit[now] = true;
 		for (int i = 0; i < list[now].size(); i++) {
-			DFS(list[now].get(i), end, num + 1);// nowÀÇ ÀÚ½ÄÀ» start·Î ÇÏ°í, num(ÃÌ¼ö)¸¦ 1 ´õÇÔ
+			DFS(list[now].get(i), end, num + 1);// nowì˜ ìì‹ì„ startë¡œ í•˜ê³ , num(ì´Œìˆ˜)ë¥¼ 1 ë”í•¨
 		}
 
 	}
@@ -35,23 +35,23 @@ public class BOJ_2644 {
 		visit = new boolean[N + 1];
 
 		String[] input = br.readLine().split(" ");
-		int N1 = Integer.parseInt(input[0]);// N1, N2´Â ÃÌ¼ö¸¦ °è»êÇÒ·Á°í ÇÏ´Â µÎ »ç¶÷ÀÇ ¹øÈ£ÀÌ´Ù.
+		int N1 = Integer.parseInt(input[0]);// N1, N2ëŠ” ì´Œìˆ˜ë¥¼ ê³„ì‚°í• ë ¤ê³  í•˜ëŠ” ë‘ ì‚¬ëŒì˜ ë²ˆí˜¸ì´ë‹¤.
 		int N2 = Integer.parseInt(input[1]);
 
 		int M = Integer.parseInt(br.readLine());
 		for (int i = 0; i < M; i++) {
 			input = br.readLine().split(" ");
-			int x = Integer.parseInt(input[0]);// Á¤Á¡1
-			int y = Integer.parseInt(input[1]);// Á¤Á¡2
-			list[x].add(y);// °£¼±¿¡ ¹İÇâ¼ºÀÌ ¾ø¾î µÎ list¿¡ ¸ğµÎ °ªÀ» ³Ö¾îÁÜ
+			int x = Integer.parseInt(input[0]);// ì •ì 1
+			int y = Integer.parseInt(input[1]);// ì •ì 2
+			list[x].add(y);// ê°„ì„ ì— ë°˜í–¥ì„±ì´ ì—†ì–´ ë‘ listì— ëª¨ë‘ ê°’ì„ ë„£ì–´ì¤Œ
 			list[y].add(x);
 		}
 		for (int i = 1; i < N + 1; i++)
 			Collections.sort(list[i]);
 
-		DFS(N1, N2, 0);// Å½»öÀ» N1ºÎÅÍ ½ÃÀÛ
+		DFS(N1, N2, 0);// íƒìƒ‰ì„ N1ë¶€í„° ì‹œì‘
 
-		if (ans != 0)// N1°ú N2°¡ ÇÑ Æ®¸®¿¡ ÀÖ´Â °æ¿ì
+		if (ans != 0)// N1ê³¼ N2ê°€ í•œ íŠ¸ë¦¬ì— ìˆëŠ” ê²½ìš°
 			bw.write(ans + "");
 		else
 			bw.write("-1");
