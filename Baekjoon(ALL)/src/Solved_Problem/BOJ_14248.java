@@ -1,7 +1,7 @@
 package Solved_Problem;
 /*
- * ½ÃÀÛ ½Ã°£: 21.12.30 13:52
- * Á¾·á ½Ã°£: 21.12.30 14:09
+ * ì‹œì‘ ì‹œê°„: 21.12.30 13:52
+ * ì¢…ë£Œ ì‹œê°„: 21.12.30 14:09
  */
 
 import java.io.BufferedReader;
@@ -20,12 +20,12 @@ public class BOJ_14248 {
 		if (visit[start])
 			return;
 		visit[start] = true;
-		ans++;// Ã³À½ ¹æ¹®ÇÒ ¶§¸¶´Ù Áõ°¡
+		ans++;// ì²˜ìŒ ë°©ë¬¸í•  ë•Œë§ˆë‹¤ ì¦ê°€
 		int dx = start + arr[start];
-		if (dx < N)// ¿ìÃøÀ¸·Î ÀÌµ¿
+		if (dx < N)// ìš°ì¸¡ìœ¼ë¡œ ì´ë™
 			DFS(dx);
 		dx = start - arr[start];
-		if (dx >= 0)// ÁÂÃøÀ¸·Î ÀÌµ¿
+		if (dx >= 0)// ì¢Œì¸¡ìœ¼ë¡œ ì´ë™
 			DFS(dx);
 	}
 
@@ -35,11 +35,11 @@ public class BOJ_14248 {
 		N = Integer.parseInt(br.readLine());
 		arr = new int[N];
 		visit = new boolean[N];
-		String[] input = br.readLine().split(" ");// µ¹ °³¼ö
-		for (int i = 0; i < N; i++) // µ¹ À§¿¡ ¼ıÀÚ ÀÔ·Â
+		String[] input = br.readLine().split(" ");// ëŒ ê°œìˆ˜
+		for (int i = 0; i < N; i++) // ëŒ ìœ„ì— ìˆ«ì ì…ë ¥
 			arr[i] = Integer.parseInt(input[i]);
-		int start = Integer.parseInt(br.readLine()) - 1;// ÇöÀçÀ§Ä¡(-1À» ÇØÁÖ´Â ÀÌÀ¯´Â ¹è¿­¿¡ ÀúÀåµÉ ¶§ -1 µÇ±â ¶§¹®)
-		DFS(start);// start¿¡¼­ DFS ½ÇÇà
+		int start = Integer.parseInt(br.readLine()) - 1;// í˜„ì¬ìœ„ì¹˜(-1ì„ í•´ì£¼ëŠ” ì´ìœ ëŠ” ë°°ì—´ì— ì €ì¥ë  ë•Œ -1 ë˜ê¸° ë•Œë¬¸)
+		DFS(start);// startì—ì„œ DFS ì‹¤í–‰
 		bw.write(ans + " ");
 		bw.flush();
 		br.close();
