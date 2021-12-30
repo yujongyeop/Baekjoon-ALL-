@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 /*
- * ½ÃÀÛ ½Ã°£: 21.12.29 14:20
- * ¿Ï·á ½Ã°£: 21.12.29 15:18
+ * ì‹œì‘ ì‹œê°„: 21.12.29 14:20
+ * ì™„ë£Œ ì‹œê°„: 21.12.29 15:18
  */
 
 public class BOJ_1058 {
@@ -21,8 +21,8 @@ public class BOJ_1058 {
 				for (int k = 0; k < N; k++) {
 					if (i == j || j == k || i == k)
 						continue;
-					if (table[i][j] > table[i][k] + table[k][j])// º»ÀÎ ÀÌ°Å³ª Á÷Á¢ ¾Æ´Â Ä£±¸ÀÏ °æ¿ì °ª º¯È­ X
-						table[i][j] = table[i][k] + table[k][j];// °Ç³Ê¼­ ¾Æ´Â Ä£±¸ÀÏ °æ¿ì(2¹ø °Ç³Ê ¾Æ´Â Ä£±¸ »Ó¸¸ ¾Æ´Ï¶ó N¹ø °Ç³Ê ¾Æ´Â Ä£±¸°í °è»êÇÔ)
+					if (table[i][j] > table[i][k] + table[k][j])// ë³¸ì¸ ì´ê±°ë‚˜ ì§ì ‘ ì•„ëŠ” ì¹œêµ¬ì¼ ê²½ìš° ê°’ ë³€í™” X
+						table[i][j] = table[i][k] + table[k][j];// ê±´ë„ˆì„œ ì•„ëŠ” ì¹œêµ¬ì¼ ê²½ìš°(2ë²ˆ ê±´ë„ˆ ì•„ëŠ” ì¹œêµ¬ ë¿ë§Œ ì•„ë‹ˆë¼ Në²ˆ ê±´ë„ˆ ì•„ëŠ” ì¹œêµ¬ê³  ê³„ì‚°í•¨)
 				}
 			}
 		}
@@ -35,13 +35,13 @@ public class BOJ_1058 {
 		table = new int[N][N];
 		int ans = 0;
 
-		for (int i = 0; i < N; i++) {// Ä£±¸ °ü°è ÀÔ·Â
+		for (int i = 0; i < N; i++) {// ì¹œêµ¬ ê´€ê³„ ì…ë ¥
 			String str = br.readLine();
 			for (int j = 0; j < N; j++) {
 				char c = str.charAt(j);
-				if (c == 'Y')// YÀÏ °æ¿ì 1·Î ÀúÀå
+				if (c == 'Y')// Yì¼ ê²½ìš° 1ë¡œ ì €ì¥
 					table[i][j] = 1;
-				else if (i != j)// i==j°¡ ¾Æ´Ï¸é c°¡ 'Y'°¡ ¾Æ´Ò ¶§ Ã³¸®
+				else if (i != j)// i==jê°€ ì•„ë‹ˆë©´ cê°€ 'Y'ê°€ ì•„ë‹ ë•Œ ì²˜ë¦¬
 					table[i][j] = 100000;
 			}
 		}
@@ -51,10 +51,10 @@ public class BOJ_1058 {
 			for (int j = 0; j < N; j++) {
 				if (i == j)
 					continue;
-				else if (table[i][j] <= 2)// 2-Ä£±¸°Å³ª ¹Ù·Î ¾Æ´Â Ä£±¸ÀÏ ¶§ tmp¸¦ ´Ã·ÁÁÜ
+				else if (table[i][j] <= 2)// 2-ì¹œêµ¬ê±°ë‚˜ ë°”ë¡œ ì•„ëŠ” ì¹œêµ¬ì¼ ë•Œ tmpë¥¼ ëŠ˜ë ¤ì¤Œ
 					tmp++;
 			}
-			ans = Math.max(ans, tmp);// ÃÖ´ë°ª °»½Å
+			ans = Math.max(ans, tmp);// ìµœëŒ€ê°’ ê°±ì‹ 
 		}
 		bw.write(ans + "");
 		bw.flush();
