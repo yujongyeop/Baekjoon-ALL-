@@ -14,21 +14,21 @@ public class BOJ_15270 {
 	static boolean[] visit;
 
 	static void DFS(int x, int depth) {
-		if (ans < depth)// depth°¡ ansº¸´Ù Ä¿Áú ¶§¸¶´Ù ans °»½Å
+		if (ans < depth)// depthê°€ ansë³´ë‹¤ ì»¤ì§ˆ ë•Œë§ˆë‹¤ ans ê°±ì‹ 
 			ans = depth;
 		if (x == N)
 			return;
-		if (!visit[x])// x¸¦ ¹æ¹®ÇÏÁö ¾Ê¾ÒÀ» ¶§
+		if (!visit[x])// xë¥¼ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ì„ ë•Œ
 			for (int i = x + 1; i <= N; i++) {
-				if (!visit[i] && list[x].contains(i)) {// i¸¦ ¹æ¹®ÇÏÁö ¾Ê¾Ò°í x¿Í i°¡ ¿¬°áµÇ¾î ÀÖÀ» ¶§
+				if (!visit[i] && list[x].contains(i)) {// ië¥¼ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ê³  xì™€ iê°€ ì—°ê²°ë˜ì–´ ìžˆì„ ë•Œ
 					visit[x] = true;
 					visit[i] = true;
-					DFS(x + 1, depth + 2);// 2¸í Áõ°¡½ÃÅ°°í x+1¿¡ ´ëÇÑ dfs ½ÇÇà(Â¦À» Ã£Àº °æ¿ì)
+					DFS(x + 1, depth + 2);// 2ëª… ì¦ê°€ì‹œí‚¤ê³  x+1ì— ëŒ€í•œ dfs ì‹¤í–‰(ì§ì„ ì°¾ì€ ê²½ìš°)
 					visit[x] = false;
 					visit[i] = false;
 				}
 			}
-		DFS(x + 1, depth);// Â¦ÀÌ ¾ø´Â °æ¿ì
+		DFS(x + 1, depth);// ì§ì´ ì—†ëŠ” ê²½ìš°
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -37,25 +37,25 @@ public class BOJ_15270 {
 		String[] input = br.readLine().split(" ");
 		N = Integer.parseInt(input[0]);// N
 		M = Integer.parseInt(input[1]);// M
-		list = new ArrayList[N + 1];// ³ëµå ¿¬°á ÀúÀå
-		visit = new boolean[N + 1];// ¹æ¹® È®ÀÎ ¹è¿­
+		list = new ArrayList[N + 1];// ë…¸ë“œ ì—°ê²° ì €ìž¥
+		visit = new boolean[N + 1];// ë°©ë¬¸ í™•ì¸ ë°°ì—´
 
 		for (int i = 0; i < N + 1; i++)
-			list[i] = new ArrayList<Integer>();// ArrayList ÃÊ±âÈ­
+			list[i] = new ArrayList<Integer>();// ArrayList ì´ˆê¸°í™”
 		for (int i = 0; i < M; i++) {
 			input = br.readLine().split(" ");
-			int x = Integer.parseInt(input[0]);// Á¤Á¡1
-			int y = Integer.parseInt(input[1]);// Á¤Á¡2
-			list[x].add(y);// °£¼±¿¡ ¹ÝÇâ¼ºÀÌ ¾ø¾î µÎ list¿¡ ¸ðµÎ °ªÀ» ³Ö¾îÁÜ
+			int x = Integer.parseInt(input[0]);// ì •ì 1
+			int y = Integer.parseInt(input[1]);// ì •ì 2
+			list[x].add(y);// ê°„ì„ ì— ë°˜í–¥ì„±ì´ ì—†ì–´ ë‘ listì— ëª¨ë‘ ê°’ì„ ë„£ì–´ì¤Œ
 			list[y].add(x);
 		}
 		for (int i = 1; i < N + 1; i++)
-			Collections.sort(list[i]);// Á¤·Ä(Á¤·ÄµÇÁö ¾ÊÀ¸¸é °¡Àå ³·Àº °ªºÎÅÍ Å½»öÀ» ÇÏÁö ¸øÇÏ´Â °æ¿ì°¡ »ý±è)
-		for (int i = 1; i <= N; i++)// ½ÃÀÛ ³ëµå¸¦ 1ºÎÅÍ N±îÁö ¿¬»êÇÔ
+			Collections.sort(list[i]);// ì •ë ¬(ì •ë ¬ë˜ì§€ ì•Šìœ¼ë©´ ê°€ìž¥ ë‚®ì€ ê°’ë¶€í„° íƒìƒ‰ì„ í•˜ì§€ ëª»í•˜ëŠ” ê²½ìš°ê°€ ìƒê¹€)
+		for (int i = 1; i <= N; i++)// ì‹œìž‘ ë…¸ë“œë¥¼ 1ë¶€í„° Nê¹Œì§€ ì—°ì‚°í•¨
 			DFS(i, 0);
-		if (ans < N)// ans°¡ Nº¸´Ù ÀÛÀº °æ¿ì´Â 1À» ´õ ÇØÁÜ(È¥ÀÚ ·Îº¿ ÃãÀ» Ãß´Â 1¸í Ãß°¡)
+		if (ans < N)// ansê°€ Në³´ë‹¤ ìž‘ì€ ê²½ìš°ëŠ” 1ì„ ë” í•´ì¤Œ(í˜¼ìž ë¡œë´‡ ì¶¤ì„ ì¶”ëŠ” 1ëª… ì¶”ê°€)
 			bw.write(ans + 1 + "");
-		else// ¸ðµÎ°¡ Â¦À» ÀÌ·ç¾î ÃãÀ» Ãß´Â °æ¿ì
+		else// ëª¨ë‘ê°€ ì§ì„ ì´ë£¨ì–´ ì¶¤ì„ ì¶”ëŠ” ê²½ìš°
 			bw.write(ans + "");
 		bw.flush();
 		br.close();
