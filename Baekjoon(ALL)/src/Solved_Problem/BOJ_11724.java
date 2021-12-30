@@ -13,14 +13,14 @@ public class BOJ_11724 {
 	static boolean[] visit;
 
 	static int DFS(int start) {
-		if (visit[start])// ÀÌ¹Ì ¹æ¹®ÇßÀ»¶§
+		if (visit[start])// ì´ë¯¸ ë°©ë¬¸í–ˆì„ë•Œ
 			return 0;
 		int count = 1;
 		visit[start] = true;
-		for (int i = 0; i < list[start].size(); i++) {//start¿Í ¿¬°áµÈ ³ëµå ¹æ¹®
+		for (int i = 0; i < list[start].size(); i++) {//startì™€ ì—°ê²°ëœ ë…¸ë“œ ë°©ë¬¸
 			count+=DFS(list[start].get(i));
 		}
-		return count;// count(¿¬°áµÈ ³ëµå °³¼ö) ¸®ÅÏ
+		return count;// count(ì—°ê²°ëœ ë…¸ë“œ ê°œìˆ˜) ë¦¬í„´
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -29,18 +29,18 @@ public class BOJ_11724 {
 		String[] input = br.readLine().split(" ");
 		N = Integer.parseInt(input[0]);// N
 		M = Integer.parseInt(input[1]);// M
-		list = new ArrayList[N + 1];// ³ëµå ¿¬°á ÀúÀå
-		visit = new boolean[N + 1];// ¹æ¹® È®ÀÎ ¹è¿­
+		list = new ArrayList[N + 1];// ë…¸ë“œ ì—°ê²° ì €ì¥
+		visit = new boolean[N + 1];// ë°©ë¬¸ í™•ì¸ ë°°ì—´
 		for (int i = 0; i < N + 1; i++)
-			list[i] = new ArrayList<Integer>();// ArrayList ÃÊ±âÈ­
+			list[i] = new ArrayList<Integer>();// ArrayList ì´ˆê¸°í™”
 		for (int i = 0; i < M; i++) {
 			input = br.readLine().split(" ");
-			int x = Integer.parseInt(input[0]);// Á¤Á¡1
-			int y = Integer.parseInt(input[1]);// Á¤Á¡2
-			list[x].add(y);// °£¼±¿¡ ¹İÇâ¼ºÀÌ ¾ø¾î µÎ list¿¡ ¸ğµÎ °ªÀ» ³Ö¾îÁÜ
+			int x = Integer.parseInt(input[0]);// ì •ì 1
+			int y = Integer.parseInt(input[1]);// ì •ì 2
+			list[x].add(y);// ê°„ì„ ì— ë°˜í–¥ì„±ì´ ì—†ì–´ ë‘ listì— ëª¨ë‘ ê°’ì„ ë„£ì–´ì¤Œ
 			list[y].add(x);
 		}
-		for (int i = 1; i <= N; i++) {// ½ÃÀÛÁ¡À» 1~N±îÁö ¸ğµÎ ¹İº¹
+		for (int i = 1; i <= N; i++) {// ì‹œì‘ì ì„ 1~Nê¹Œì§€ ëª¨ë‘ ë°˜ë³µ
 			if (DFS(i) != 0)
 				ans++;
 		}
