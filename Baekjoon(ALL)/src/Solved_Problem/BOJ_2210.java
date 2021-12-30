@@ -8,25 +8,25 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class BOJ_2210 {
-	static int[] dx = { 0, 0, -1, 1 };// »óÇÏÁÂ¿ì ¹è¿­
+	static int[] dx = { 0, 0, -1, 1 };// ìƒí•˜ì¢Œìš° ë°°ì—´
 	static int[] dy = { 1, -1, 0, 0 };
-	static int[] arr = new int[6];// 6°³ÀÇ ¼ıÀÚ ´ã´Â ¹è¿­
+	static int[] arr = new int[6];// 6ê°œì˜ ìˆ«ì ë‹´ëŠ” ë°°ì—´
 	static ArrayList<Integer> list = new ArrayList<>();
 	static int[][] table = new int[5][5];
 	static boolean[] visit;
 
 	static void DFS(int x, int y, int depth) {
-		if (depth == 6) {// ±æÀÌ°¡ 6ÀÌ µÆÀ» ¶§
+		if (depth == 6) {// ê¸¸ì´ê°€ 6ì´ ëì„ ë•Œ
 			int num = 0;
-			for (int i = 0; i < 6; i++)// arr¹è¿­¿¡ ÀÖ´Â ¼ö¸¦ intÇüÀ¸·Î º¯È¯
+			for (int i = 0; i < 6; i++)// arrë°°ì—´ì— ìˆëŠ” ìˆ˜ë¥¼ intí˜•ìœ¼ë¡œ ë³€í™˜
 				num += (arr[i] * (int) Math.pow(10, 5 - i));
-			if (!list.contains(num)) {// list¿¡ numÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì Ãß°¡ ÇØÁÜ
+			if (!list.contains(num)) {// listì— numì´ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° ì¶”ê°€ í•´ì¤Œ
 				list.add(num);
 			}
 			return;
 		}
-		arr[depth] = table[x][y];// (x,y)¿¡ ÀÖ´Â ¼ö¸¦ ¹è¿­¿¡ depth À§Ä¡¿¡ ³Ö¾îÁÜ
-		for (int i = 0; i < 4; i++) {// »óÇÏÁÂ¿ì Å½»ö
+		arr[depth] = table[x][y];// (x,y)ì— ìˆëŠ” ìˆ˜ë¥¼ ë°°ì—´ì— depth ìœ„ì¹˜ì— ë„£ì–´ì¤Œ
+		for (int i = 0; i < 4; i++) {// ìƒí•˜ì¢Œìš° íƒìƒ‰
 			if (x + dx[i] >= 0 && x + dx[i] < 5 && y + dy[i] >= 0 && y + dy[i] < 5)
 				DFS(x + dx[i], y + dy[i], depth + 1);
 		}
@@ -35,17 +35,17 @@ public class BOJ_2210 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		for (int i = 0; i < 5; i++) {// ¼ıÀÚÆÇ ÀÔ·Â ¹Ş¾Æ¿À´Â ºÎºĞ
+		for (int i = 0; i < 5; i++) {// ìˆ«ìíŒ ì…ë ¥ ë°›ì•„ì˜¤ëŠ” ë¶€ë¶„
 			String[] input = br.readLine().split(" ");
 			for (int j = 0; j < 5; j++)
 				table[i][j] = Integer.parseInt(input[j]);
 		}
 
-		for (int i = 0; i < 5; i++) {// ½ÃÀÛÁ¡À» (0,0)ºÎÅÍ (4,4)±îÁö ¸ğµÎ Å½»ö
+		for (int i = 0; i < 5; i++) {// ì‹œì‘ì ì„ (0,0)ë¶€í„° (4,4)ê¹Œì§€ ëª¨ë‘ íƒìƒ‰
 			for (int j = 0; j < 5; j++)
 				DFS(i, j, 0);
 		}
-		int ans = list.size();// listÀÇ °³¼ö°¡ Á¤´äÀÓ
+		int ans = list.size();// listì˜ ê°œìˆ˜ê°€ ì •ë‹µì„
 		bw.write(ans + "");
 		bw.flush();
 		bw.close();
