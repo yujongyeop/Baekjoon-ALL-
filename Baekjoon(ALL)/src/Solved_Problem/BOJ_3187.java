@@ -7,13 +7,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 /*
- * ½ÃÀÛ ½Ã°£: 21.12.29 11:25
- * ¿Ï·á ½Ã°£: 21.12.29 11:27
- * Âü°í: BOJ_3184¹®Á¦¶û »ç½Ç»ó °°À½
+ * ì‹œì‘ ì‹œê°„: 21.12.29 11:25
+ * ì™„ë£Œ ì‹œê°„: 21.12.29 11:27
+ * ì°¸ê³ : BOJ_3184ë¬¸ì œë‘ ì‚¬ì‹¤ìƒ ê°™ìŒ
  */
 
 public class BOJ_3187 {
-	static int[] dx = { 0, 0, -1, 1 };// »óÇÏÁÂ¿ì ¹è¿­
+	static int[] dx = { 0, 0, -1, 1 };// ìƒí•˜ì¢Œìš° ë°°ì—´
 	static int[] dy = { 1, -1, 0, 0 };
 	static int N, M;
 	static String[][] table;
@@ -24,12 +24,12 @@ public class BOJ_3187 {
 		if (visit[x][y] || table[x][y].equals("#"))
 			return;
 		visit[x][y] = true;
-		if (table[x][y].equals("k"))// (x,y)°¡ k¸é ¾ç ¼ö Áõ°¡
+		if (table[x][y].equals("k"))// (x,y)ê°€ kë©´ ì–‘ ìˆ˜ ì¦ê°€
 			num_Sheep++;
-		else if (table[x][y].equals("v"))// (x,y)°¡ v¸é ´Á´ë ¼ö Áõ°¡
+		else if (table[x][y].equals("v"))// (x,y)ê°€ vë©´ ëŠ‘ëŒ€ ìˆ˜ ì¦ê°€
 			num_Wolf++;
-		for (int i = 0; i < 4; i++) {// »óÇÏÁÂ¿ì·Î ÀÌµ¿
-			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < M)// (x+dx,y+dy)°¡ ¹è¿­ ¹ÛÀ¸·Î ¹ş¾î³ªÁö ¾Ê°Ô ¼³Á¤
+		for (int i = 0; i < 4; i++) {// ìƒí•˜ì¢Œìš°ë¡œ ì´ë™
+			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < M)// (x+dx,y+dy)ê°€ ë°°ì—´ ë°–ìœ¼ë¡œ ë²—ì–´ë‚˜ì§€ ì•Šê²Œ ì„¤ì •
 				DFS(x + dx[i], y + dy[i]);
 		}
 	}
@@ -42,21 +42,21 @@ public class BOJ_3187 {
 		M = Integer.parseInt(input[1]);
 		table = new String[N][M];
 		visit = new boolean[N][M];
-		for (int i = 0; i < N; i++) {// »ç¿ëÀÚ °ª ÀÔ·Â
+		for (int i = 0; i < N; i++) {// ì‚¬ìš©ì ê°’ ì…ë ¥
 			String[] str = br.readLine().split("");
 			for (int j = 0; j < M; j++)
 				table[i][j] = str[j];
 		}
-		
-		int ans_Sheep = 0, ans_Wolf = 0; // ÃÖÁ¾À¸·Î »ì¾Æ³²Àº ¾ç°ú ´Á´ëÀÇ ¼ö¸¦ ÀúÀåÇÏ´Â º¯¼ö
+
+		int ans_Sheep = 0, ans_Wolf = 0; // ìµœì¢…ìœ¼ë¡œ ì‚´ì•„ë‚¨ì€ ì–‘ê³¼ ëŠ‘ëŒ€ì˜ ìˆ˜ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
-				num_Sheep = 0;//¹İº¹ÇÒ ¶§ ¸¶´Ù ÃÊ±âÈ­ ÇØÁÜ
+				num_Sheep = 0;//ë°˜ë³µí•  ë•Œ ë§ˆë‹¤ ì´ˆê¸°í™” í•´ì¤Œ
 				num_Wolf = 0;
 				DFS(i, j);
-				if (num_Sheep > num_Wolf)// ¾çÀÌ ´Á´ëº¸´Ù ¸¹À» °æ¿ì
+				if (num_Sheep > num_Wolf)// ì–‘ì´ ëŠ‘ëŒ€ë³´ë‹¤ ë§ì„ ê²½ìš°
 					ans_Sheep += num_Sheep;
-				else// ´Á´ë°¡ ¾çÀÌ¶û °°°Å³ª ´õ ¸¹À» °æ¿ì
+				else// ëŠ‘ëŒ€ê°€ ì–‘ì´ë‘ ê°™ê±°ë‚˜ ë” ë§ì„ ê²½ìš°
 					ans_Wolf += num_Wolf;
 			}
 		}
