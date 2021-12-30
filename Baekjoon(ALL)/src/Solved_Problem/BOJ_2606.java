@@ -30,23 +30,23 @@ public class BOJ_2606 {
 		int N = Integer.parseInt(input);// N
 		input = br.readLine();
 		int M = Integer.parseInt(input);// M
-		int start = 1;// ½ÃÀÛÁ¡
-		list = new ArrayList[N + 1];// ³ëµå ¿¬°á ÀúÀå
-		visit = new boolean[N + 1];// ¹æ¹® È®ÀÎ ¹è¿­
+		int start = 1;// ì‹œì‘ì 
+		list = new ArrayList[N + 1];// ë…¸ë“œ ì—°ê²° ì €ì¥
+		visit = new boolean[N + 1];// ë°©ë¬¸ í™•ì¸ ë°°ì—´
 
 		for (int i = 0; i < N + 1; i++)
-			list[i] = new ArrayList<Integer>();// ArrayList ÃÊ±âÈ­
+			list[i] = new ArrayList<Integer>();// ArrayList ì´ˆê¸°í™”
 		for (int i = 0; i < M; i++) {
 			String[] user_input = br.readLine().split(" ");
-			int x = Integer.parseInt(user_input[0]);// Á¤Á¡1
-			int y = Integer.parseInt(user_input[1]);// Á¤Á¡2
-			list[x].add(y);// °£¼±¿¡ ¹İÇâ¼ºÀÌ ¾ø¾î µÎ list¿¡ ¸ğµÎ °ªÀ» ³Ö¾îÁÜ
+			int x = Integer.parseInt(user_input[0]);// ì •ì 1
+			int y = Integer.parseInt(user_input[1]);// ì •ì 2
+			list[x].add(y);// ê°„ì„ ì— ë°˜í–¥ì„±ì´ ì—†ì–´ ë‘ listì— ëª¨ë‘ ê°’ì„ ë„£ì–´ì¤Œ
 			list[y].add(x);
 		}
 		for (int i = 1; i < N + 1; i++)
-			Collections.sort(list[i]);// Á¤·Ä(Á¤·ÄµÇÁö ¾ÊÀ¸¸é °¡Àå ³·Àº °ªºÎÅÍ Å½»öÀ» ÇÏÁö ¸øÇÏ´Â °æ¿ì°¡ »ı±è)
+			Collections.sort(list[i]);// ì •ë ¬(ì •ë ¬ë˜ì§€ ì•Šìœ¼ë©´ ê°€ì¥ ë‚®ì€ ê°’ë¶€í„° íƒìƒ‰ì„ í•˜ì§€ ëª»í•˜ëŠ” ê²½ìš°ê°€ ìƒê¹€)
 		DFS(start);
-		bw.write(ans-1 + "");// ans¿¡¼­ 1À» »©´Â ÀÌÀ¯´Â ÃÖÃÊ·Î °¨¿°µÈ ÄÄÇ»ÅÍ´Â »©Áà¾ßÇÏ±â ¶§¹®
+		bw.write(ans-1 + "");// ansì—ì„œ 1ì„ ë¹¼ëŠ” ì´ìœ ëŠ” ìµœì´ˆë¡œ ê°ì—¼ëœ ì»´í“¨í„°ëŠ” ë¹¼ì¤˜ì•¼í•˜ê¸° ë•Œë¬¸
 		bw.flush();
 		bw.close();
 		br.close();
