@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BOJ_2667 {
-	static int[] dx = { 0, 0, -1, 1 };// »óÇÏÁÂ¿ì ¹è¿­
+	static int[] dx = { 0, 0, -1, 1 };// ìƒí•˜ì¢Œìš° ë°°ì—´
 	static int[] dy = { 1, -1, 0, 0 };
 	static int[][] map;
 	static boolean[][] visit;
@@ -21,9 +21,9 @@ public class BOJ_2667 {
 		if (visit[x][y])
 			return;
 		visit[x][y] = true;
-		count++;//Ã³À½ ¹æ¹®ÇÒ ¶§¸¶´Ù ¼ö¸¦ Áõ°¡ ½ÃÅ´
-		for (int i = 0; i < 4; i++) {// »óÇÏÁÂ¿ì Å½»ö
-			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < N)// 0<=x+dx,y+dy<=N-1 ¼³Á¤
+		count++;//ì²˜ìŒ ë°©ë¬¸í•  ë•Œë§ˆë‹¤ ìˆ˜ë¥¼ ì¦ê°€ ì‹œí‚´
+		for (int i = 0; i < 4; i++) {// ìƒí•˜ì¢Œìš° íƒìƒ‰
+			if (x + dx[i] >= 0 && x + dx[i] < N && y + dy[i] >= 0 && y + dy[i] < N)// 0<=x+dx,y+dy<=N-1 ì„¤ì •
 				DFS(x + dx[i], y + dy[i]);
 		}
 	}
@@ -35,26 +35,26 @@ public class BOJ_2667 {
 		N = Integer.parseInt(br.readLine());
 		map = new int[N][N];
 		visit = new boolean[N][N];
-		for (int i = 0; i < N; i++) {// »ç¿ëÀÚ°ª ÀÔ·Â ¹Ş´Â ÇÔ¼ö
+		for (int i = 0; i < N; i++) {// ì‚¬ìš©ìê°’ ì…ë ¥ ë°›ëŠ” í•¨ìˆ˜
 			String str = br.readLine();
 			for (int j = 0; j < N; j++) {
 				map[i][j] = str.charAt(j) - '0';
-				if (map[i][j] == 0)// ÀÔ·ÂÀÌ 0ÀÏ °æ¿ì ¹æ¹®Ã³¸®
+				if (map[i][j] == 0)// ì…ë ¥ì´ 0ì¼ ê²½ìš° ë°©ë¬¸ì²˜ë¦¬
 					visit[i][j] = true;
 			}
 		}
 
-		for (int i = 0; i < N; i++) {// (0,0)ºÎÅÍ (N-1,N-1)±îÁö Å½»ö
+		for (int i = 0; i < N; i++) {// (0,0)ë¶€í„° (N-1,N-1)ê¹Œì§€ íƒìƒ‰
 			for (int j = 0; j < N; j++) {
-				count = 0;// ÃÊ±âÈ­
+				count = 0;// ì´ˆê¸°í™”
 				DFS(i, j);
-				if (count > 0)// count°¡ 0º¸´Ù Å« °æ¿ì list¿¡ Ãß°¡
+				if (count > 0)// countê°€ 0ë³´ë‹¤ í° ê²½ìš° listì— ì¶”ê°€
 					list.add(count);
 			}
 		}
-		Collections.sort(list);// ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
-		sb.append(list.size() + "\n");// listÀÇ °³¼ö Ãâ·Â
-		for (int m : list)// listÀÇ ¿ø¼Òµé Ãâ·Â
+		Collections.sort(list);// ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
+		sb.append(list.size() + "\n");// listì˜ ê°œìˆ˜ ì¶œë ¥
+		for (int m : list)// listì˜ ì›ì†Œë“¤ ì¶œë ¥
 			sb.append(m + "\n");
 		bw.write(String.valueOf(sb));
 		bw.flush();
