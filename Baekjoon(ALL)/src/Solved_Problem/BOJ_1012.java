@@ -10,33 +10,33 @@ public class BOJ_1012 {
 	static int M, N, K;
 	static int[][] table;
 	static boolean[][] visit;
-	static int[] dx = { 0, 0, -1, 1 };// »óÇÏÁÂ¿ì ÀÌµ¿ ½Ã »ç¿ë
+	static int[] dx = { 0, 0, -1, 1 };// ìƒí•˜ì¢Œìš° ì´ë™ ì‹œ ì‚¬ìš©
 	static int[] dy = { 1, -1, 0, 0 };
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	static void make_Table() throws IOException {// »ç¿ëÀÚ ÀÔ·Â°ª ¹Ş´Â ÇÔ¼ö
+	static void make_Table() throws IOException {// ì‚¬ìš©ì ì…ë ¥ê°’ ë°›ëŠ” í•¨ìˆ˜
 		String[] input = br.readLine().split(" ");
-		N = Integer.parseInt(input[0]);// N(X°ª)
-		M = Integer.parseInt(input[1]);// M(Y°ª)
-		K = Integer.parseInt(input[2]);// K(¹èÃß°³¼ö)
+		N = Integer.parseInt(input[0]);// N(Xê°’)
+		M = Integer.parseInt(input[1]);// M(Yê°’)
+		K = Integer.parseInt(input[2]);// K(ë°°ì¶”ê°œìˆ˜)
 		table = new int[N][M];
 		visit = new boolean[N][M];
 		for (int i = 0; i < K; i++) {
 			input = br.readLine().split(" ");
-			table[Integer.parseInt(input[0])][Integer.parseInt(input[1])] = 1;// (x,y)¸¦ 1·Î ¼³Á¤;
+			table[Integer.parseInt(input[0])][Integer.parseInt(input[1])] = 1;// (x,y)ë¥¼ 1ë¡œ ì„¤ì •;
 		}
 
 	}
 
 	static int DFS(int x, int y) {
-		if (visit[x][y] || table[x][y] == 0)//¹æ¹®Çß°Å³ª, (x,y)°¡ 0ÀÎ °æ¿ì
+		if (visit[x][y] || table[x][y] == 0)//ë°©ë¬¸í–ˆê±°ë‚˜, (x,y)ê°€ 0ì¸ ê²½ìš°
 			return 0;
 		int count = 1;
-		visit[x][y] = true;// (x,y)¹æ¹® Ã³¸®
-		for (int i = 0; i < 4; i++) {// »óÇÏÁÂ¿ì Å½»ö
+		visit[x][y] = true;// (x,y)ë°©ë¬¸ ì²˜ë¦¬
+		for (int i = 0; i < 4; i++) {// ìƒí•˜ì¢Œìš° íƒìƒ‰
 			if (x + dx[i] < 0 || x + dx[i] >= N || y + dy[i] < 0 || y + dy[i] >= M)
 				continue;
-			count += DFS(x + dx[i], y + dy[i]);// »óÇÏÁÂ¿ì ÀÌµ¿ °¡´É ½Ã DFSÈ£ÁÙ
+			count += DFS(x + dx[i], y + dy[i]);// ìƒí•˜ì¢Œìš° ì´ë™ ê°€ëŠ¥ ì‹œ DFSí˜¸ì¤„
 		}
 		return count;
 	}
@@ -48,9 +48,9 @@ public class BOJ_1012 {
 		for (int i = 0; i < loop_Num; i++) {
 			ans = 0;
 			make_Table();
-			for (int j = 0; j < N; j++) {// (0,0)ºÎÅÍ (N-1,M-1)±îÁö ¸ğµÎ Å½»ö
+			for (int j = 0; j < N; j++) {// (0,0)ë¶€í„° (N-1,M-1)ê¹Œì§€ ëª¨ë‘ íƒìƒ‰
 				for (int k = 0; k < M; k++) {
-					if (DFS(j, k) != 0)// (j,k)°¡ ÇÑ°³ÀÌ»óÀÇ ¹èÃß¿Í ¿¬°áµÇ¾úÀ» ¶§
+					if (DFS(j, k) != 0)// (j,k)ê°€ í•œê°œì´ìƒì˜ ë°°ì¶”ì™€ ì—°ê²°ë˜ì—ˆì„ ë•Œ
 						ans++;
 				}
 			}
