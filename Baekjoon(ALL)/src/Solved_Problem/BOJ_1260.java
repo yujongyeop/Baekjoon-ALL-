@@ -15,24 +15,24 @@ public class BOJ_1260 {
 	static boolean[] visit;
 	static StringBuilder sb = new StringBuilder();
 
-	static void DFS(int start) {// ±íÀÌ ¿ì¼± Å½»ö
+	static void DFS(int start) {// ê¹Šì´ ìš°ì„  íƒìƒ‰
 		visit[start] = true;
 		sb.append(start + " ");
-		for (int i = 0; i < list[start].size(); i++) {// start ¾È¿¡ ÀÖ´Â °ªÁß ÀÛÀº °ªºÎÅÍ Å½»ö(¸¸¾à ¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é ±× °ªºÎÅÍ Ã³¸®)
-			int x = list[start].get(i);// start¿¡ ÀÖ´Â i¹øÂ° °ª
-			if (!visit[x])// i¹øÂ° °ªÀÌ ¹æ¹®ÇÏÁö ¾Ê¾ÒÀ¸¸é ¹æ¹®
+		for (int i = 0; i < list[start].size(); i++) {// start ì•ˆì— ìˆëŠ” ê°’ì¤‘ ì‘ì€ ê°’ë¶€í„° íƒìƒ‰(ë§Œì•½ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´ ê·¸ ê°’ë¶€í„° ì²˜ë¦¬)
+			int x = list[start].get(i);// startì— ìˆëŠ” ië²ˆì§¸ ê°’
+			if (!visit[x])// ië²ˆì§¸ ê°’ì´ ë°©ë¬¸í•˜ì§€ ì•Šì•˜ìœ¼ë©´ ë°©ë¬¸
 				DFS(x);
 		}
 	}
 
-	static void BFS(int start) {// ³Êºñ ¿ì¼± Å½»ö
+	static void BFS(int start) {// ë„ˆë¹„ ìš°ì„  íƒìƒ‰
 		Queue<Integer> que = new LinkedList<>();
-		que.offer(start);// start¸¦ Å¥¿¡ ³ÖÀ½
+		que.offer(start);// startë¥¼ íì— ë„£ìŒ
 		visit[start] = true;
-		while (!que.isEmpty()) {// Å¥°¡ ºñ¿©ÀÖÀ» ¶§±îÁö ¹İº¹
-			int x = que.poll();// °¡Àå ¸ÕÀú µé¾î¿Â °ªÀ» »­
+		while (!que.isEmpty()) {// íê°€ ë¹„ì—¬ìˆì„ ë•Œê¹Œì§€ ë°˜ë³µ
+			int x = que.poll();// ê°€ì¥ ë¨¼ì € ë“¤ì–´ì˜¨ ê°’ì„ ëºŒ
 			sb.append(x + " ");
-			for (int i = 0; i < list[x].size(); i++) {// x°¡ °¡Áö°í ÀÖ´Â °£¼±À» ¸ğµÎ Å½»ö
+			for (int i = 0; i < list[x].size(); i++) {// xê°€ ê°€ì§€ê³  ìˆëŠ” ê°„ì„ ì„ ëª¨ë‘ íƒìƒ‰
 				int y = list[x].get(i);
 				if (!visit[y]) {
 					que.offer(y);
@@ -48,25 +48,25 @@ public class BOJ_1260 {
 		String[] input = br.readLine().split(" ");
 		int N = Integer.parseInt(input[0]);// N
 		int M = Integer.parseInt(input[1]);// M
-		int start = Integer.parseInt(input[2]);// ½ÃÀÛÁ¡
-		list = new ArrayList[N + 1];// ³ëµå ¿¬°á ÀúÀå
+		int start = Integer.parseInt(input[2]);// ì‹œì‘ì 
+		list = new ArrayList[N + 1];// ë…¸ë“œ ì—°ê²° ì €ì¥
 
 		for (int i = 0; i < N + 1; i++)
-			list[i] = new ArrayList<Integer>();// ArrayList ÃÊ±âÈ­
+			list[i] = new ArrayList<Integer>();// ArrayList ì´ˆê¸°í™”
 		for (int i = 0; i < M; i++) {
 			input = br.readLine().split(" ");
-			int x = Integer.parseInt(input[0]);// Á¤Á¡1
-			int y = Integer.parseInt(input[1]);// Á¤Á¡2
-			list[x].add(y);// °£¼±¿¡ ¹İÇâ¼ºÀÌ ¾ø¾î µÎ list¿¡ ¸ğµÎ °ªÀ» ³Ö¾îÁÜ
+			int x = Integer.parseInt(input[0]);// ì •ì 1
+			int y = Integer.parseInt(input[1]);// ì •ì 2
+			list[x].add(y);// ê°„ì„ ì— ë°˜í–¥ì„±ì´ ì—†ì–´ ë‘ listì— ëª¨ë‘ ê°’ì„ ë„£ì–´ì¤Œ
 			list[y].add(x);
 		}
 		for (int i = 1; i < N + 1; i++)
-			Collections.sort(list[i]);// Á¤·Ä(Á¤·ÄµÇÁö ¾ÊÀ¸¸é °¡Àå ³·Àº °ªºÎÅÍ Å½»öÀ» ÇÏÁö ¸øÇÏ´Â °æ¿ì°¡ »ı±è)
+			Collections.sort(list[i]);// ì •ë ¬(ì •ë ¬ë˜ì§€ ì•Šìœ¼ë©´ ê°€ì¥ ë‚®ì€ ê°’ë¶€í„° íƒìƒ‰ì„ í•˜ì§€ ëª»í•˜ëŠ” ê²½ìš°ê°€ ìƒê¹€)
 
-		visit = new boolean[N + 1];// visit ÃÊ±âÈ­(ÃÖÃÊ)
+		visit = new boolean[N + 1];// visit ì´ˆê¸°í™”(ìµœì´ˆ)
 		DFS(start);
 		sb.append("\n");
-		visit = new boolean[N + 1];// visit ÃÊ±âÈ­(DFS¿¬»ê ÀÌÈÄ¿¡ ¿ø·¡ »óÅÂ·Î ÃÊ±âÈ­)
+		visit = new boolean[N + 1];// visit ì´ˆê¸°í™”(DFSì—°ì‚° ì´í›„ì— ì›ë˜ ìƒíƒœë¡œ ì´ˆê¸°í™”)
 		BFS(start);
 		bw.write(String.valueOf(sb));
 		bw.flush();
