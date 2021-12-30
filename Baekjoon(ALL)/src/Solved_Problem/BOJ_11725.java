@@ -12,13 +12,13 @@ public class BOJ_11725 {
 	static int[] arr;
 	static boolean[] visit;
 
-	static void DFS(int start, int parent) {// ºÎ¸ğ³ëµå¸¦ ¸Å°³º¯¼ö·Î ³ÖÀ½
+	static void DFS(int start, int parent) {// ë¶€ëª¨ë…¸ë“œë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ë„£ìŒ
 		if (visit[start])
 			return;
-		arr[start] = parent;// ³ëµå startÀÇ ºÎ¸ğ¸¦ parent·Î ÀúÀå
+		arr[start] = parent;// ë…¸ë“œ startì˜ ë¶€ëª¨ë¥¼ parentë¡œ ì €ì¥
 		visit[start] = true;
 		for (int i = 0; i < list[start].size(); i++) {
-			DFS(list[start].get(i), start);// startÀÇ ÀÚ½Ä ³ëµåµéÀÇ parent°ªÀ» start·Î ³ÖÀ½
+			DFS(list[start].get(i), start);// startì˜ ìì‹ ë…¸ë“œë“¤ì˜ parentê°’ì„ startë¡œ ë„£ìŒ
 		}
 	}
 
@@ -27,20 +27,20 @@ public class BOJ_11725 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());// N
 		list = new ArrayList[N + 1];
-		arr = new int[N + 1];// ³ëµåÀÇ ºÎ¸ğ ³ëµå¸¦ ÀúÀåÇÒ ¹è¿­
-		visit = new boolean[N + 1];// ¹æ¹® ¿©ºÎ¸¦ ÀúÀåÇÒ ¹è¿­
+		arr = new int[N + 1];// ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œë¥¼ ì €ì¥í•  ë°°ì—´
+		visit = new boolean[N + 1];// ë°©ë¬¸ ì—¬ë¶€ë¥¼ ì €ì¥í•  ë°°ì—´
 		String[] input;
-		for (int i = 0; i < N + 1; i++)// ArrayList¹è¿­ ÃÊ±âÈ­
+		for (int i = 0; i < N + 1; i++)// ArrayListë°°ì—´ ì´ˆê¸°í™”
 			list[i] = new ArrayList<Integer>();
 		for (int i = 1; i < N; i++) {
 			input = br.readLine().split(" ");
-			int x = Integer.parseInt(input[0]);// Á¤Á¡1
-			int y = Integer.parseInt(input[1]);// Á¤Á¡2
-			list[x].add(y);// °£¼±¿¡ ¹İÇâ¼ºÀÌ ¾ø¾î µÎ list¿¡ ¸ğµÎ °ªÀ» ³Ö¾îÁÜ
+			int x = Integer.parseInt(input[0]);// ì •ì 1
+			int y = Integer.parseInt(input[1]);// ì •ì 2
+			list[x].add(y);// ê°„ì„ ì— ë°˜í–¥ì„±ì´ ì—†ì–´ ë‘ listì— ëª¨ë‘ ê°’ì„ ë„£ì–´ì¤Œ
 			list[y].add(x);
 		}
 		DFS(1, 0);
-		for (int i = 2; i < N + 1; i++)// ³ëµå 2ºÎÅÍ N±îÁöÀÇ ºÎ¸ğ³ëµå Ãâ·Â
+		for (int i = 2; i < N + 1; i++)// ë…¸ë“œ 2ë¶€í„° Nê¹Œì§€ì˜ ë¶€ëª¨ë…¸ë“œ ì¶œë ¥
 			bw.write(arr[i] + "\n");
 		bw.flush();
 		bw.close();
