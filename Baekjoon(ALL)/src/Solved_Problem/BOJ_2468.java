@@ -2,6 +2,7 @@ package Solved_Problem;
 /*
  * 시작 시간: 21.12.31 9:30
  * 종료 시간: 21.12.31 10:12
+ * 수정: line 29 불필요한 연산 삭제(21.12.31 10:51)
  */
 
 import java.io.BufferedReader;
@@ -25,7 +26,7 @@ public class BOJ_2468 {
 			int tmp_y = y + dy[i];
 			if (tmp_x >= 0 && tmp_x < N && tmp_y >= 0 && tmp_y < N) {// 0<=x+dx,y+dy<=N-1 설정
 				if (!visit[tmp_x][tmp_y] && arr[tmp_x][tmp_y] >= h_max)// 방문하지 않았으며 비의 양과 같거나 높은 지역일 때
-					DFS(x + dx[i], y + dy[i]);
+					DFS(tmp_x, tmp_y);
 			}
 		}
 
