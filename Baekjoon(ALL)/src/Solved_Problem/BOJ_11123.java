@@ -1,4 +1,4 @@
-package unSolved_Problem;
+package Solved_Problem;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
