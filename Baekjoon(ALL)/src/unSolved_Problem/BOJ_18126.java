@@ -7,17 +7,17 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-class node {
-	int v;
-	int len;
-
-	node(int v, int len) {
-		this.v = v;
-		this.len = len;
-	}
-}
-
 public class BOJ_18126 {
+	static class node {
+		int v;
+		int len;
+
+		node(int v, int len) {
+			this.v = v;
+			this.len = len;
+		}
+	}
+
 	static long ans = 0;
 	static ArrayList<node>[] list;
 	static boolean[] visit;
