@@ -8,7 +8,6 @@ public class BOJ_18108 {
 		Scanner sc = new Scanner(System.in);
 		int y = sc.nextInt();
 		System.out.println(y-543);
-
 	}
 
 }
